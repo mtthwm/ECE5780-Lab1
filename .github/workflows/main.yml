@@ -18,6 +18,11 @@ jobs:
         ref: develop
         path: pico-sdk
 
+    - name: Checkout our repo
+      uses: actions/checkout@v3
+      with:
+        path: ${{github.workspace}}/source
+
     - name: Checkout pico-sdk submodules
       working-directory: ${{github.workspace}}/pico-sdk
       run: git submodule update --init
