@@ -2,6 +2,12 @@ CCPREFIX=$(PICO_TOOLCHAIN_PATH)/bin/arm-none-eabi
 CPP=$(CCPREFIX)-cpp
 CC=$(CCPREFIX)-gcc
 AS=$(CCPREFIX)-as
+LD=$(CCPREFIX)-ld
+SRC=main.c second.c
+OBJS=$(patsubst %.c,%.o,$(SRC))
+
+firmware.elf: $(OBJS)
+	$(LD) -o $@ $^
 
 %.s: %.i
 	$(CC) -S $<
@@ -18,4 +24,6 @@ hello.txt:
 clean:
 	rm -f main.i hello.txt
 
-.PHONY: clean
+all: firmware.elf
+
+.PHONY: clean all
