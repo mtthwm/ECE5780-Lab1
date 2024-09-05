@@ -22,7 +22,7 @@ hello.txt:
 	echo "hello world" > hello.txt
 
 clean:
-	rm -f main.i hello.txt
+	rm -f *.i *.s *.o firmware.elf hello.txt
 
 all: firmware.elf
 
