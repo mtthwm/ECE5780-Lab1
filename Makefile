@@ -6,6 +6,8 @@ LD=$(CCPREFIX)-ld
 SRC=main.c second.c
 OBJS=$(patsubst %.c,%.o,$(SRC))
 
+all: firmware.elf
+
 firmware.elf: $(OBJS)
 	$(LD) -o $@ $^
 
@@ -23,7 +25,5 @@ hello.txt:
 
 clean:
 	rm -f *.i *.s *.o firmware.elf hello.txt
-
-all: firmware.elf
 
 .PHONY: clean all
